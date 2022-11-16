@@ -1,4 +1,7 @@
+
 const carrito = []
+
+const URL = "../bbdd/libros.json"
 const container = document.querySelector("div.container")
 
 const activarBotonesAdd = ()=> {
@@ -9,12 +12,21 @@ const activarBotonesAdd = ()=> {
             })
         })
 }
-
-const cargarMisProductos= ()=>{
-    container.innerHTML = ""
-     productos.forEach (producto => {container.innerHTML += retornoCard (producto)
-     })
-     activarBotonesAdd()
+debugger
+const cargarMisProductos = async ()=> {
+    let armoHTML = ""
+    let activoBotones = true
+        try {
+            const response = await fetch(URL)
+                  productos = await response.json()
+                  productos.forEach(producto => armoHTML += retornoCard(producto))
+        } catch (error) {
+            armoHTML = retornoError()
+            activoBotones = false 
+        } finally {
+            container.innerHTML = armoHTML
+            activoBotones && activarBotonesAdd()
+        }
 }
 
 cargarMisProductos()

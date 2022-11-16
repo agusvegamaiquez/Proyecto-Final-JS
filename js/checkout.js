@@ -6,7 +6,7 @@ const recuperarCarrito = ()=> {
         let carritoRecuperado = JSON.parse(localStorage.getItem("carrito")) || []
             carritoRecuperado.forEach(producto => carrito.push(producto))
     } else {
-        console.warn("No se encontró un carrito previamente guardado.")
+        console.warn("No tenemos algun carrito previo suyo")
     }
 }
 
@@ -14,15 +14,15 @@ const cargarCarrito = ()=> {
     let tablaBody = ""
     const tbody = document.querySelector("tbody")
           tbody.innerHTML = ""
-          carrito.forEach(fruta => {
+          carrito.forEach(libro => {
             tablaBody += `<tr>
-                            <th>${fruta.nombre}</th>
-                            <th>$ ${fruta.precio}</th>
-                            <th><button id="${fruta.nombre}" class="button-delete button-small">x</button></th>
+                            <th>${libro.nombre}</th>
+                            <th>$ ${libro.precio}</th>
+                            <th><button id="${libro.nombre}" class="button-delete button-small">x</button></th>
                         </tr>`
           })
           tbody.innerHTML = tablaBody
-    let totalCarrito = carrito.reduce((acc, item)=> acc + item.precio, 0 )
+    let totalCarrito = carrito.reduce((acc, libro)=> acc + libro.precio, 0 )
         tbody.innerHTML += `<tr>
                                 <th></th>
                                 <th>TOTAL</th>

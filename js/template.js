@@ -22,10 +22,17 @@ const toast =(mensaje)=>{
         text: mensaje,
         duration: 3000,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
+        gravity: "top", 
+        position: "right", 
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
       }).showToast();
 }
+const retornoError = ()=> {
+  return  `<div class="card-error">
+              <h2>Error encontrado</h2>
+              <h3>Los productos no han podido ser cargados</h3>
+
+          </div>`
+  }
